@@ -1,0 +1,26 @@
+Style/Documentation:
+  Enabled: false
+AllCops:
+  TargetRubyVersion: 3.3.1
+  NewCops: disable
+  Exclude:
+    - "bin/**/*"
+Metrics/MethodLength:
+  Exclude:
+    - "db/**/*"
+Metrics/BlockLength:
+  Exclude:
+    - 'config/environments/**/*'
+Security/MarshalLoad:
+  Enabled: false
+Lint/MissingSuper:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always
+Metrics/ClassLength:
+  Exclude:
+    - 'test/**/*'
+Layout/LineLength:
+  Exclude:
+    - 'test/**/*'
