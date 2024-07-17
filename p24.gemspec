@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary = 'Przelewy24 adapter'
   spec.homepage = 'https://github.com/DeVeLo/p24'
   spec.license = 'MIT'
-  spec.required_ruby_version = '>= 3.3.1'
+  spec.required_ruby_version = '>= 3.2.4'
 
   spec.metadata['allowed_push_host'] = "TODO: Set to your gem server 'https://example.com'"
 
