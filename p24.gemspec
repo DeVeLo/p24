@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email = ['konrad@snopkow.eu']
 
   spec.summary = 'Przelewy24 adapter'
-  spec.homepage = 'https://github/DeVeLo/p24'
+  spec.homepage = 'https://github.com/DeVeLo/p24'
   spec.license = 'MIT'
   spec.required_ruby_version = '>= 3.3.1'
 
