@@ -1,13 +1,15 @@
+require:
+  - rubocop-minitest
+  - rubocop-rake
 Style/Documentation:
   Enabled: false
 AllCops:
-  TargetRubyVersion: 3.3.1
+  TargetRubyVersion: 3.2
   NewCops: disable
   Exclude:
     - "bin/**/*"
 Metrics/MethodLength:
-  Exclude:
-    - "db/**/*"
+  Enabled: false
 Metrics/BlockLength:
   Exclude:
     - 'config/environments/**/*'
@@ -24,3 +26,7 @@ Metrics/ClassLength:
 Layout/LineLength:
   Exclude:
     - 'test/**/*'
+Metrics/ParameterLists:
+  Enabled: false
+Metrics/AbcSize:
+  Enabled: false

@@ -13,9 +13,23 @@ module P24
     end
 
     def transaction_register(**kwargs)
-      generic_post_json endpoint(
-        '/transaction/register'
-      ), Api::V1::Request::TransactionRegister.new(**kwargs.merge({ crc: })).to_json, Api::V1::Response::TransactionRegister
+      generic_post_json(
+        endpoint('/transaction/register'),
+        Api::V1::Request::TransactionRegister.new(**kwargs.merge({ crc: })).to_json,
+        Api::V1::Response::TransactionRegister
+      )
+    end
+
+    def transaction_verify(**kwargs)
+      generic_post_json(
+        endpoint('/transaction/register'),
+        Api::V1::Request::TransactionVerify.new(**kwargs.merge({ crc: })).to_json,
+        Api::V1::Response::TransactionVerify
+      )
+    end
+
+    def transaction_notification(json)
+      Api::V1::TransactionNotification.from_json(json, crc).correct?
     end
 
     def payment_methods(lang, amount: nil, currency: nil)
@@ -33,19 +47,19 @@ module P24
 
     private
 
-    def endpoint(url, *args, **params)
+    def endpoint(url, *_args, **params)
       uri = URI "#{base_url}#{url}"
       uri.query = URI.encode_www_form(convert_keys_to_camelcase(params)).gsub('%2C', ',')
       uri.to_s
     end
 
     def generic_json(uri, type)
-      response = HTTParty.get(uri, timeout:, debug_output: $stdout, basic_auth:, headers:)
+      response = HTTParty.get(uri, timeout:, basic_auth:, headers:)
       handle_response(uri, response, type)
     end
 
     def generic_post_json(uri, body, type)
-      response = HTTParty.post(uri, timeout:, debug_output: $stdout, basic_auth:, headers:, body:)
+      response = HTTParty.post(uri, timeout:, basic_auth:, headers:, body:)
       handle_response(uri, response, type)
     end
 
@@ -102,9 +116,9 @@ module P24
       str.split('_').inject([]) { |buffer, e| buffer.push(buffer.empty? ? e : e.capitalize) }.join
     end
 
-    def keyword_args(m, b)
-      method(m).parameters.select { |type, _| %i[key keyreq].include? type }.map do |_, name|
-        [name, handle_args(b.local_variable_get(name))]
+    def keyword_args(meth, bind)
+      method(meth).parameters.select { |type, _| %i[key keyreq].include? type }.map do |_, name|
+        [name, handle_args(bind.local_variable_get(name))]
       end.to_h.compact
     end
   end

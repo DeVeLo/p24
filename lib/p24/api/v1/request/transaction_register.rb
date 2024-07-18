@@ -11,8 +11,8 @@ module P24
                       :transfer_label, :mobile_lib, :sdk_version, :encoding, :method_ref_id, :crc
 
           def initialize(merchant_id:, pos_id:, session_id:, amount:, currency:, description:, email:,
-                         country:, language:, url_return:, crc:, client: nil, address: nil, zip: nil, city: nil, phone: nil,
-                         method: nil, url_status: nil, time_limit: nil, channel: nil,
+                         country:, language:, url_return:, crc:, client: nil, address: nil, zip: nil, city: nil,
+                         phone: nil, method: nil, url_status: nil, time_limit: nil, channel: nil,
                          wait_for_result: nil, regulation_accept: nil, shipping: nil, transfer_label: nil,
                          mobile_lib: nil, sdk_version: nil, encoding: nil, method_ref_id: nil)
             @merchant_id = merchant_id
@@ -43,20 +43,6 @@ module P24
             @encoding = encoding
             @method_ref_id = method_ref_id
             @crc = crc
-          end
-
-          def sign_params
-            {
-              sessionId: session_id,
-              merchantId: merchant_id,
-              amount:,
-              currency:,
-              crc:
-            }
-          end
-
-          def sign
-            Digest::SHA384.hexdigest JSON.generate(sign_params, { ascii_only: false, escape_slash: false })
           end
 
           def to_json(*_args)
@@ -90,6 +76,22 @@ module P24
               encoding:,
               methodRefId: method_ref_id
             }.compact.to_json
+          end
+
+          private
+
+          def sign_params
+            {
+              sessionId: session_id,
+              merchantId: merchant_id,
+              amount:,
+              currency:,
+              crc:
+            }
+          end
+
+          def sign
+            Digest::SHA384.hexdigest sign_params.to_json
           end
         end
       end
