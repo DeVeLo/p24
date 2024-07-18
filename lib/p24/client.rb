@@ -21,8 +21,8 @@ module P24
     end
 
     def transaction_verify(**kwargs)
-      generic_post_json(
-        endpoint('/transaction/register'),
+      generic_put_json(
+        endpoint('/transaction/verify'),
         Api::V1::Request::TransactionVerify.new(**kwargs.merge({ crc: })).to_json,
         Api::V1::Response::TransactionVerify
       )
@@ -55,6 +55,11 @@ module P24
 
     def generic_json(uri, type)
       response = HTTParty.get(uri, timeout:, basic_auth:, headers:)
+      handle_response(uri, response, type)
+    end
+
+    def generic_post_json(uri, body, type)
+      response = HTTParty.put(uri, timeout:, basic_auth:, headers:, body:)
       handle_response(uri, response, type)
     end
 
