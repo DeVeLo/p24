@@ -45,6 +45,10 @@ module P24
       ), Api::V1::Response::TestAccess
     end
 
+    def redirect_url(token)
+      "#{uri(base_url)}/trnRequest/#{token}"
+    end
+
     private
 
     def endpoint(url, *_args, **params)
@@ -125,6 +129,11 @@ module P24
       method(meth).parameters.select { |type, _| %i[key keyreq].include? type }.map do |_, name|
         [name, handle_args(bind.local_variable_get(name))]
       end.to_h.compact
+    end
+
+    def uri(c)
+      purl = URI.parse(c.url)
+      "#{purl.scheme}://#{purl.host}"
     end
   end
 end
