@@ -2,14 +2,15 @@
 
 module P24
   class Client
-    attr_reader :user, :secret_id, :crc, :base_url, :timeout
+    attr_reader :user, :secret_id, :crc, :base_url, :timeout, :debug
 
-    def initialize(user:, secret_id:, crc:, base_url: 'https://sandbox.przelewy24.pl/api/v1', timeout: 30)
+    def initialize(user:, secret_id:, crc:, base_url: 'https://sandbox.przelewy24.pl/api/v1', timeout: 30, debug: false)
       @user = user
       @secret_id = secret_id
       @crc = crc
       @timeout = timeout
       @base_url = base_url
+      @debug = debug
     end
 
     def transaction_register(**kwargs)
@@ -58,17 +59,17 @@ module P24
     end
 
     def generic_json(uri, type)
-      response = HTTParty.get(uri, timeout:, basic_auth:, headers:)
+      response = HTTParty.get(uri, timeout:, basic_auth:, headers:, debug_output: debug ? $stdout : false)
       handle_response(uri, response, type)
     end
 
     def generic_post_json(uri, body, type)
-      response = HTTParty.put(uri, timeout:, basic_auth:, headers:, body:)
+      response = HTTParty.put(uri, timeout:, basic_auth:, headers:, body:, debug_output: debug ? $stdout : false)
       handle_response(uri, response, type)
     end
 
     def generic_post_json(uri, body, type)
-      response = HTTParty.post(uri, timeout:, basic_auth:, headers:, body:)
+      response = HTTParty.post(uri, timeout:, basic_auth:, headers:, body:, debug_output: debug ? $stdout : false)
       handle_response(uri, response, type)
     end
 
