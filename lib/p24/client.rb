@@ -132,8 +132,8 @@ module P24
       end.to_h.compact
     end
 
-    def uri(c)
-      purl = URI.parse(c.url)
+    def uri(url)
+      purl = URI.parse(url)
       "#{purl.scheme}://#{purl.host}"
     end
   end
