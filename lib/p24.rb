@@ -19,5 +19,7 @@ require_relative 'p24/api/v1/response/payment_method/data'
 require_relative 'p24/api/v1/response/payment_method/availability_hours'
 require_relative 'p24/api/v1/response/transaction_register'
 
+require_relative 'p24/api/v1/transaction_notification'
+
 module P24
 end
