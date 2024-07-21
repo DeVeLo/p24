@@ -21,6 +21,7 @@ module P24
             {
               merchantId: merchant_id,
               posId: pos_id,
+              orderId: order_id,
               sessionId: session_id,
               amount:,
               currency:,
