@@ -64,12 +64,12 @@ module P24
     end
 
     def generic_post_json(uri, body, type)
-      response = HTTParty.put(uri, timeout:, basic_auth:, headers:, body:, debug_output: debug ? $stdout : false)
+      response = HTTParty.post(uri, timeout:, basic_auth:, headers:, body:, debug_output: debug ? $stdout : false)
       handle_response(uri, response, type)
     end
 
-    def generic_post_json(uri, body, type)
-      response = HTTParty.post(uri, timeout:, basic_auth:, headers:, body:, debug_output: debug ? $stdout : false)
+    def generic_put_json(uri, body, type)
+      response = HTTParty.put(uri, timeout:, basic_auth:, headers:, body:, debug_output: debug ? $stdout : false)
       handle_response(uri, response, type)
     end
 
