@@ -29,8 +29,8 @@ module P24
       )
     end
 
-    def transaction_notification(json)
-      Api::V1::TransactionNotification.from_json(json, crc).correct?
+    def transaction_notification(**kwargs)
+      Api::V1::TransactionNotification.new(**kwargs.merge({ crc: })).correct?
     end
 
     def payment_methods(lang, amount: nil, currency: nil)

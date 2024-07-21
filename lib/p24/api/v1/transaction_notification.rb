@@ -5,7 +5,8 @@ module P24
     attr_reader :merchant_id, :pos_id, :session_id, :amount, :origin_amount, :currency,
                 :order_id, :method_id, :statement, :crc, :sign
 
-    def initialize(merchant_id:, pos_id:, session_id:, amount:, currency:, order_id:, crc:, sign: nil)
+    def initialize(merchant_id:, pos_id:, session_id:, amount:, origin_amount:, currency:,
+                   order_id:, method_id:, statement:, crc:, sign: nil)
       @merchant_id = merchant_id
       @pos_id = pos_id
       @session_id = session_id
