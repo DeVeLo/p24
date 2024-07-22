@@ -2,21 +2,23 @@
 
 module P24
   class Client
-    attr_reader :user, :secret_id, :crc, :base_url, :timeout, :debug
+    attr_reader :user, :secret_id, :crc, :base_url, :timeout, :debug, :encoding
 
-    def initialize(user:, secret_id:, crc:, base_url: 'https://sandbox.przelewy24.pl/api/v1', timeout: 30, debug: false)
+    def initialize(user:, secret_id:, crc:, base_url: 'https://sandbox.przelewy24.pl/api/v1', timeout: 30,
+                   encoding: 'UTF-8', debug: false)
       @user = user
       @secret_id = secret_id
       @crc = crc
       @timeout = timeout
       @base_url = base_url
       @debug = debug
+      @encoding = encoding
     end
 
     def transaction_register(**kwargs)
       generic_post_json(
         endpoint('/transaction/register'),
-        Api::V1::Request::TransactionRegister.new(**kwargs.merge({ crc: })).to_json,
+        Api::V1::Request::TransactionRegister.new(**kwargs.merge({ crc:, encoding: })).to_json,
         Api::V1::Response::TransactionRegister
       )
     end
