@@ -15,7 +15,7 @@ module P24
           end
 
           def to_json(options = {})
-            { data:, response_code: }.to_json(options)
+            { data: data.to_h, response_code: }.to_json(options)
           end
 
           class << self

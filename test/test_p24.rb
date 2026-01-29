@@ -10,11 +10,11 @@ end
 
 class TestPrzelewy24Alias < Minitest::Test
   def test_przelewy24_constant_is_defined
-    assert defined?(Przelewy24), 'Stała Przelewy24 powinna być zdefiniowana'
+    assert defined?(Przelewy24), 'Przelewy24 constant should be defined'
   end
 
   def test_przelewy24_is_alias_to_p24_client
-    assert_equal P24::Client, Przelewy24, 'Przelewy24 powinno być aliasem do P24::Client'
+    assert_equal P24::Client, Przelewy24, 'Przelewy24 should be an alias to P24::Client'
   end
 
   def test_can_create_instance_using_przelewy24
@@ -24,7 +24,7 @@ class TestPrzelewy24Alias < Minitest::Test
       crc: 'test_crc'
     )
 
-    assert_instance_of P24::Client, client, 'Instancja utworzona przez Przelewy24 powinna być instancją P24::Client'
+    assert_instance_of P24::Client, client, 'Instance created using Przelewy24 should be an instance of P24::Client'
   end
 
   def test_przelewy24_instance_has_same_attributes_as_p24_client
