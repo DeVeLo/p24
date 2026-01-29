@@ -22,7 +22,7 @@ class TestTransactionVerifyResponse < Minitest::Test
   def test_initialization_with_different_status
     data = { 'status' => 'failed' }
     response = P24::Api::V1::Response::TransactionVerify.new(
-      data: data,
+      data:,
       response_code: 1
     )
 
@@ -105,7 +105,7 @@ class TestTransactionVerifyResponse < Minitest::Test
   def test_handles_nil_status_in_data
     data = { 'status' => nil }
     response = P24::Api::V1::Response::TransactionVerify.new(
-      data: data,
+      data:,
       response_code: 0
     )
 
@@ -115,7 +115,7 @@ class TestTransactionVerifyResponse < Minitest::Test
   def test_handles_empty_data_hash
     data = {}
     response = P24::Api::V1::Response::TransactionVerify.new(
-      data: data,
+      data:,
       response_code: 0
     )
 
