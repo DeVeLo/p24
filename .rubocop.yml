@@ -8,6 +8,7 @@ AllCops:
   NewCops: disable
   Exclude:
     - "bin/**/*"
+    - "vendor/**/*"
 Metrics/MethodLength:
   Enabled: false
 Metrics/BlockLength:
