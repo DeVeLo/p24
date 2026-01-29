@@ -199,5 +199,5 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Resources
 
-- [Przelewy24 Official Documentation](https://docs.przelewy24.pl/)
-- [Przelewy24 API v1 Reference](https://docs.przelewy24.pl/api-v1)
+- [Przelewy24 Official Documentation](https://www.przelewy24.pl/do-pobrania#dokumentacja-techniczna)
+- [Przelewy24 API v1 Reference](https://developers.przelewy24.pl/)
