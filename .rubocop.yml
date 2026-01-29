@@ -21,11 +21,9 @@ Style/FrozenStringLiteralComment:
   Enabled: true
   EnforcedStyle: always
 Metrics/ClassLength:
-  Exclude:
-    - 'test/**/*'
+  Max: 150
 Layout/LineLength:
-  Exclude:
-    - 'test/**/*'
+  Max: 150
 Metrics/ParameterLists:
   Enabled: false
 Metrics/AbcSize:
