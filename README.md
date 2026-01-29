@@ -1,4 +1,4 @@
-# P24
+# P24 == Przelewy24
 
 A Ruby gem for integrating with Przelewy24 (P24), a popular Polish payment gateway. This library provides a simple and intuitive interface for handling online payments through the Przelewy24 API v1.
 
