@@ -8,12 +8,11 @@ Gem::Specification.new do |spec|
   spec.authors = ['Konrad Makowski']
   spec.email = ['konrad@snopkow.eu']
 
-  spec.summary = 'Przelewy24 adapter'
+  spec.summary = 'Ruby client for Przelewy24 payment gateway API'
+  spec.description = 'A Ruby gem for integrating with Przelewy24 (P24), a popular Polish payment gateway. Provides transaction registration, verification, payment method discovery, and notification handling with signature verification.'
   spec.homepage = 'https://github.com/DeVeLo/p24'
   spec.license = 'MIT'
   spec.required_ruby_version = '>= 3.2.4'
-
-  spec.metadata['allowed_push_host'] = "TODO: Set to your gem server 'https://example.com'"
 
   spec.metadata['homepage_uri'] = spec.homepage
 
