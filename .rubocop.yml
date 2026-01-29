@@ -23,6 +23,8 @@ Style/FrozenStringLiteralComment:
   EnforcedStyle: always
 Metrics/ClassLength:
   Max: 150
+  Exclude:
+    - 'test/**/*'
 Layout/LineLength:
   Max: 150
 Metrics/ParameterLists:
